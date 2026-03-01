@@ -6,12 +6,15 @@ import Thanks from "./components/Thanks"
 import {GrFormNext, GrFormPrevious} from "react-icons/gr"
 
 // Hooks
+import { useForm } from "./hooks/useForm"
 
 // CSS
 import './App.css'
 
 function App() {
-  
+  const formComponents = [<UseForm/>, <ReviewForm/>, <Thanks/>]
+
+  const {currentStep, currentComponent, changeStep} = useForm(formComponents)
 
   return (
     <div className="app">
@@ -21,16 +24,16 @@ function App() {
       </div>
       <div className="form-container">
         <p>passos</p>
-        <form>
+        <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
           <div className="inputs-container">
-            <UseForm />
+            {currentComponent}
           </div>
           <div className="actions">
-            <button>
+            <button type="button" onClick={() => changeStep(currentStep - 1)}>
               <GrFormPrevious />
               <span>Voltar</span>
             </button>
-            <button>
+            <button type="submit">
               <span>Avançar</span>
               <GrFormNext />
             </button>
