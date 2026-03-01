@@ -2,6 +2,7 @@
 import UseForm from "./components/UseForm"
 import ReviewForm from "./components/ReviewForm"
 import Thanks from "./components/Thanks"
+import Steps from "./components/Steps"
 
 import {GrFormNext, GrFormPrevious} from "react-icons/gr"
 
@@ -23,7 +24,7 @@ function App() {
         <p>Ficamos felizes com a sua compra, utilize o formulário abaixo para avaliar o produto</p>
       </div>
       <div className="form-container">
-        <p>passos</p>
+        <Steps currentStep={currentStep} />
         <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
           <div className="inputs-container">
             {currentComponent}
